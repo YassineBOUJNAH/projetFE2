@@ -7,9 +7,25 @@
         android:title="Rechercher">
     </item>
     <item
-        android:id="@+id/menu_activity_main_params"
-        android:icon="@drawable/ic_more_vert_white_24dp"
-        app:showAsAction="ifRoom"
-        android:title="Paramètres">
+        android:id="@+id/empty"
+        android:title="options"
+        android:orderInCategory="101"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_more_vert_white_24dp">
+
+        <menu>
+
+            <item android:id="@+id/action_profile"
+                android:icon="@android:drawable/ic_menu_myplaces"
+                app:showAsAction="ifRoom"
+                android:title="profile" />
+
+            <item android:id="@+id/action_help"
+                android:icon="@android:drawable/ic_menu_help"
+                app:showAsAction="ifRoom"
+                android:title="help" />
+
+        </menu>
+
     </item>
 </menu>

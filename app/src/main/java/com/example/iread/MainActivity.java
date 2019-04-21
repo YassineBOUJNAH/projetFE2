@@ -3,12 +3,9 @@ package com.example.iread;
 import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.iread.R;
-import com.example.iread.auth.ProfileActivity;
+import com.example.iread.auth.HomeActivity;
 import com.example.iread.base.BaseActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
@@ -83,7 +80,7 @@ public class MainActivity extends BaseActivity {
 
     // 3 - Launching Profile Activity
     private void startProfileActivity(){
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 
