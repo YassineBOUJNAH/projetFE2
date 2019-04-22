@@ -24,7 +24,7 @@ import com.example.iread.Adapters.PageAdapter;
 import com.example.iread.Fragment.ProfilePageFragment;
 import com.example.iread.R;
 import com.example.iread.base.BaseActivity;
-import com.example.iread.options.ProfileActivity;
+import com.example.iread.options.SettingActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -88,8 +88,8 @@ public class HomeActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //3 - Handle actions on menu items
         switch (item.getItemId()) {
-            case R.id.action_profile:
-                startActivity(new Intent(this, ProfileActivity.class));
+            case R.id.action_setting:
+                startActivity(new Intent(this, SettingActivity.class));
                 Toast.makeText(this, "Il n'y a rien à paramétrer ici, passez votre chemin...", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_activity_main_search:

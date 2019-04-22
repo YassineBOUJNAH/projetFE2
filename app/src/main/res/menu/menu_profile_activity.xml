@@ -15,10 +15,10 @@
 
         <menu>
 
-            <item android:id="@+id/action_profile"
-                android:icon="@android:drawable/ic_menu_myplaces"
+            <item android:id="@+id/action_setting"
+                android:icon="@android:drawable/ic_menu_preferences"
                 app:showAsAction="ifRoom"
-                android:title="profile" />
+                android:title="setting" />
 
             <item android:id="@+id/action_help"
                 android:icon="@android:drawable/ic_menu_help"

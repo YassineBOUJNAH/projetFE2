@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".options.ProfileActivity">
+    tools:context=".options.SettingActivity">
     <!-- Importation de notre Toolbar -->
     <!-- Déclaration de notre Toolbar -->
     <android.support.v7.widget.Toolbar

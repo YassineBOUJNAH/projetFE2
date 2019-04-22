@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.iread.Fragment.BlankFragment;
 import com.example.iread.Fragment.NewsPageFragment;
 import com.example.iread.Fragment.ParamPageFragment;
 import com.example.iread.Fragment.ProfilePageFragment;
@@ -18,7 +19,7 @@ public class PageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return(3);
+        return(4);
     }
 
     @Override
@@ -30,6 +31,8 @@ public class PageAdapter extends FragmentPagerAdapter {
                 return ProfilePageFragment.newInstance();
             case 2: //Page number 3
                 return ParamPageFragment.newInstance();
+            case 3: //Page number 4
+                return BlankFragment.newInstance();
             default:
                 return null;
         }
@@ -44,6 +47,8 @@ public class PageAdapter extends FragmentPagerAdapter {
                 return "Profil";
             case 2: //Page number 3
                 return "Paramètre";
+            case 3: //Page number 4
+                return "PBlank";
             default:
                 return null;
         }

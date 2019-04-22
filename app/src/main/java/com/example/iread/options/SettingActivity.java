@@ -7,13 +7,13 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.iread.R;
 
-public class ProfileActivity extends AppCompatActivity {
+public class SettingActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.options_activity_profile);
+        setContentView(R.layout.options_activity_setting);
         //1 - Configuring Toolbar
         this.configureToolbar();
     }
