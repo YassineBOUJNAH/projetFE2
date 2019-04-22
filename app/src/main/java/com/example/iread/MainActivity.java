@@ -27,7 +27,6 @@ public class MainActivity extends BaseActivity {
         // 4 - Handle SignIn Activity response on activity result
         this.handleResponseAfterSignIn(requestCode, resultCode, data);
     }
-
     //FOR DESIGN
     // 1 - Get Coordinator Layout
     @BindView(R.id.main_activity_coordinator_layout)

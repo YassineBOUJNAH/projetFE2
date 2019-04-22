@@ -18,8 +18,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+        <!-- BUTTON SIGN OUT -->
+        <Button
+            android:id="@+id/Setting_activity_button_sign_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_sign_out_account"
+            android:textColor="#fff"
+            android:textSize="@dimen/default_text_size"
+            android:background="@drawable/button_radius_accent_color"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_margin="@dimen/default_margin"
+            android:padding="@dimen/default_margin"/>
 
 
+        <!-- BUTTON DELETE ACCOUNT -->
+        <Button
+            android:id="@+id/setting_activity_button_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_delete_account"
+            android:textColor="#fff"
+            android:textSize="@dimen/default_text_size"
+            android:background="@drawable/button_radius_error_color"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_margin="@dimen/default_margin"
+            android:padding="@dimen/default_margin"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
