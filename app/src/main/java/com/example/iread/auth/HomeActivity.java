@@ -100,7 +100,6 @@ public class HomeActivity extends BaseActivity implements ProfilePageFragment.On
 
     @Override
     public void onUpdateButton(View v) {
-        ProfilePageFragment.profileTextViewEmail.setText("hh");
         this.updateUsernameInFirebase();
     }
     // 3 - Update User Username

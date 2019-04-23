@@ -71,11 +71,10 @@ public class SettingActivity extends BaseActivity {
     private void deleteUserFromFirebase(){
         if (this.getCurrentUser() != null) {
             //4 - We also delete user from firestore storage
-            com.example.firebase.api.UserHelper.deleteUser(this.getCurrentUser().getUid()).addOnFailureListener(this.onFailureListener());
-
             AuthUI.getInstance()
                     .delete(this)
                     .addOnSuccessListener(this, this.updateUIAfterRESTRequestsCompleted(DELETE_USER_TASK));
+           com.example.firebase.api.UserHelper.deleteUser(this.getCurrentUser().getUid()).addOnFailureListener(this.onFailureListener());
 
         }
     }
