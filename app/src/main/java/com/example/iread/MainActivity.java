@@ -5,11 +5,14 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.widget.Button;
 
+import com.example.iread.api.UserHelper;
 import com.example.iread.auth.HomeActivity;
 import com.example.iread.base.BaseActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.Arrays;
 
@@ -101,13 +104,21 @@ public class MainActivity extends BaseActivity {
     // --------------------
 
     // 3 - Method that handles response after SignIn Activity close
+    // 3 - Method that handles response after SignIn Activity close
     private void handleResponseAfterSignIn(int requestCode, int resultCode, Intent data){
 
         IdpResponse response = IdpResponse.fromResultIntent(data);
 
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) { // SUCCESS
-                this.createUserInFirestore();
+                UserHelper.getUser(this.getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if(!(Boolean) documentSnapshot.exists()) {
+                            createUserInFirestore();
+                        }
+                    }
+                });
                 showSnackBar(this.coordinatorLayout, getString(R.string.connection_succeed));
             } else { // ERRORS
                 if (response == null) {
@@ -121,16 +132,17 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+
     // 1 - Http request that create user in firestore
     private void createUserInFirestore(){
 
-        if (this.getCurrentUser() != null){
+        if (this.getCurrentUser() != null) {
 
-            String urlPicture = (this.getCurrentUser().getPhotoUrl() != null) ? this.getCurrentUser().getPhotoUrl().toString() : null;
-            String username = this.getCurrentUser().getDisplayName();
-            String uid = this.getCurrentUser().getUid();
+                String urlPicture = (this.getCurrentUser().getPhotoUrl() != null) ? this.getCurrentUser().getPhotoUrl().toString() : null;
+                String uid = this.getCurrentUser().getUid();
+                String username = this.getCurrentUser().getDisplayName();
+                com.example.iread.api.UserHelper.createUser(uid, username, urlPicture).addOnFailureListener(this.onFailureListener());
 
-            com.example.firebase.api.UserHelper.createUser(uid, username, urlPicture).addOnFailureListener(this.onFailureListener());
         }
     }
 

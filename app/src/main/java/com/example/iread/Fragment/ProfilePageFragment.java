@@ -37,59 +37,19 @@ import butterknife.OnClick;
 public class ProfilePageFragment extends Fragment {
 
 
-    public static TextView profileTextViewEmail;
-    public static ImageView profileimageViewProfilel;
-    public static TextInputEditText profileTextInputEditTextUsername;
-    public static ProgressBar profileProgressBar;
-    public static Button profileUpdateButton;
 
     public static ProfilePageFragment newInstance() {
         return (new ProfilePageFragment());
     }
 //gestion des callback
 
-    public interface OnUpdateButtonListener{
-        public void onUpdateButton(View v);
-    }
-
-    private OnUpdateButtonListener updateCallback;
 
     ///
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View result=inflater.inflate(R.layout.fragment_profile_page, container, false);
-     ///For Design
-        profileTextViewEmail=(TextView)result.findViewById(R.id.fragment_profile_text_view_email);
-        profileimageViewProfilel=(ImageView)result.findViewById(R.id.fragment_profile_imageview_profile);
-        profileTextInputEditTextUsername=(TextInputEditText) result.findViewById(R.id.fragment_profile_edit_text_username);
-        profileProgressBar=(ProgressBar)result.findViewById(R.id.fragment_profile_progress_bar);
-        profileUpdateButton = (Button)result.findViewById(R.id.fragment_profile_button_update);
-
-    ///gestion des listener
-
-        View.OnClickListener clickListenerupdate = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateCallback.onUpdateButton(v);
-            }
-        };
-        profileUpdateButton.setOnClickListener(clickListenerupdate);
-
-
         return result;
     }
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        this.createCallbackToParentActivity();
-    }
-    private void createCallbackToParentActivity(){
-        try {
-            //Parent activity will automatically subscribe to callback
-            updateCallback = (OnUpdateButtonListener) getActivity();
-        } catch (ClassCastException e) {
-            throw new ClassCastException(e.toString()+ " must implement OnButtonClickedListener");
-        }
-    }
+
 
 }

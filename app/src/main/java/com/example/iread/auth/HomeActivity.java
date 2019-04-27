@@ -22,14 +22,8 @@ import com.example.iread.options.SettingActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-public class HomeActivity extends BaseActivity implements ProfilePageFragment.OnUpdateButtonListener {
+public class HomeActivity extends BaseActivity {
 
-    // Creating identifier to identify REST REQUEST (Update username) PROFILe
-
-    private static final int UPDATE_USERNAME = 30;
-
-
-    //FOR DESIGN
 
 
     @Override
@@ -40,7 +34,6 @@ public class HomeActivity extends BaseActivity implements ProfilePageFragment.On
         //3 - Configure ViewPager
         this.configureViewPagerAndTabs();
         this.configureToolbar();
-        this.updateUIWhenCreating(); // 2 - Update UI
 
     }
 
@@ -95,62 +88,4 @@ public class HomeActivity extends BaseActivity implements ProfilePageFragment.On
         }
     }
 
-///////Profile Gestion///////////////////////////////////////////////////////////////////////////
-    // Creating identifier to identify REST REQUEST (Update username) PROFILe
-
-    @Override
-    public void onUpdateButton(View v) {
-        this.updateUsernameInFirebase();
-    }
-    // 3 - Update User Username
-    private void updateUsernameInFirebase(){
-
-        ProfilePageFragment.profileProgressBar.setVisibility(View.VISIBLE);
-        String username = ProfilePageFragment.profileTextInputEditTextUsername.getText().toString();
-
-        if (this.getCurrentUser() != null){
-            if (!username.isEmpty() &&  !username.equals(getString(R.string.info_no_username_found))){
-                com.example.firebase.api.UserHelper.updateUsername(username, this.getCurrentUser().getUid()).addOnFailureListener(this.onFailureListener()).addOnSuccessListener(this.updateUIAfterHelpRESTRequestsCompleted(UPDATE_USERNAME));
-            }
-        }
-    }
-    private OnSuccessListener<Void> updateUIAfterHelpRESTRequestsCompleted(final int origin){
-        return new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                switch (origin){
-                    // 8 - Hiding Progress bar after request completed
-                    case UPDATE_USERNAME:
-                        ProfilePageFragment.profileProgressBar.setVisibility(View.INVISIBLE);
-                        break;
-                }
-            }
-        };
-    }
-    // 6 - Arranging method that updating UI with Firestore data
-    private void updateUIWhenCreating(){
-
-        if (this.getCurrentUser() != null){
-
-            // 7 - Get additional data from Firestore (isMentor & Username)
-            com.example.firebase.api.UserHelper.getUser(this.getCurrentUser().getUid()).addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    User currentUser = documentSnapshot.toObject(User.class);
-                    String username = TextUtils.isEmpty(currentUser.getUsername()) ? getString(R.string.info_no_username_found) : currentUser.getUsername();
-                    ProfilePageFragment.profileTextInputEditTextUsername.setText(username);
-                    String email =getCurrentUser().getEmail();
-                    ProfilePageFragment.profileTextViewEmail.setText(email);
-
-                    if (getCurrentUser().getPhotoUrl() != null) {
-                        Glide.with(HomeActivity.this)
-                                .load(getCurrentUser().getPhotoUrl())
-                                .apply(RequestOptions.circleCropTransform())
-                                .into(ProfilePageFragment.profileimageViewProfilel);
-                    }
-
-                }
-            });
-        }
-    }
 }
