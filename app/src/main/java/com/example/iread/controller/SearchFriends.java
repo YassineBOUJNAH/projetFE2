@@ -107,5 +107,7 @@ public class SearchFriends extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         Log.e("TAG", "onClick: " + v.getTag() );
+        
+
     }
 }

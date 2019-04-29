@@ -6,16 +6,24 @@
     android:layout_height="match_parent"
     tools:context="com.example.iread.Fragment.BlankFragment"
     android:gravity="center"
-    android:background="#EDD9CF">
+    android:background="#EDD9CF"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/fragment_blank_add"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dip"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        android:textAlignment="center"
-        android:text="Nous pourrions afficher les livre ici ?"/>
+        android:text="ajouter des amis"/>
+
+    <Button
+        android:id="@+id/fragment_blank_view_invitation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="voir les invitation"/>
+    <Button
+        android:id="@+id/fragment_blank_view_friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="voir vos amis"/>
 
 </LinearLayout>

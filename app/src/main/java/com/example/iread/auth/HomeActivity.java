@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.iread.Adapters.PageAdapter;
+import com.example.iread.Fragment.BlankFragment;
 import com.example.iread.Fragment.NewsPageFragment;
 import com.example.iread.Fragment.NewsPageFragment.OnAddClicklistener;
 import com.example.iread.Fragment.ProfilePageFragment;
@@ -22,12 +23,14 @@ import com.example.iread.R;
 import com.example.iread.base.BaseActivity;
 import com.example.iread.controller.SearchBooks;
 import com.example.iread.controller.SearchFriends;
+import com.example.iread.controller.friend;
+import com.example.iread.controller.invitation;
 import com.example.iread.model.User;
 import com.example.iread.options.SettingActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-public class HomeActivity extends BaseActivity implements OnAddClicklistener {
+public class HomeActivity extends BaseActivity implements OnAddClicklistener, BlankFragment.OnFriendClicklistener {
 
 
 
@@ -98,6 +101,25 @@ public class HomeActivity extends BaseActivity implements OnAddClicklistener {
         startActivity(new Intent(this, SearchFriends.class));
 
     }
+
+
 ///manupiler AmisFrgament///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @Override
+    public void onAddButtonClick(View view) {
+        startActivity(new Intent(this, SearchFriends.class));
+
+    }
+
+    @Override
+    public void onfriendViewClick(View view) {
+        startActivity(new Intent(this, friend.class));
+
+    }
+
+    @Override
+    public void onInvitaionViewClick(View view) {
+        startActivity(new Intent(this, invitation.class));
+
+    }
 }
