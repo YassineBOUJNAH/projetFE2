@@ -29,13 +29,6 @@ import butterknife.OnClick;
 
 public class SettingActivity extends BaseActivity {
 
-    // 1 - Adding CheckBox Mentor View
-
-    @BindView(R.id.profile_activity_check_box_is_mentor)
-    CheckBox checkBoxIsMentor;
-
-
-
     // Creating identifier to identify REST REQUEST (Update username)
 
     private static final int UPDATE_USERNAME = 30;
@@ -44,9 +37,7 @@ public class SettingActivity extends BaseActivity {
     // 2 - Identify each Http Request
     private static final int SIGN_OUT_TASK = 10;
     private static final int DELETE_USER_TASK = 20;
-    @OnClick(R.id.profile_activity_check_box_is_mentor)
 
-    public void onClickCheckBoxIsMentor() { this.updateUserIsMentor(); }
     //FOR DESIGN
     @BindView(R.id.profile_activity_imageview_profile)
     ImageView imageViewProfile;
@@ -127,15 +118,6 @@ public class SettingActivity extends BaseActivity {
         }
 
     }
-    private void updateUserIsMentor(){
-
-        if (this.getCurrentUser() != null) {
-
-            com.example.iread.api.UserHelper.updateIsMentor(this.getCurrentUser().getUid(), this.checkBoxIsMentor.isChecked()).addOnFailureListener(this.onFailureListener());
-
-        }
-
-    }
 
     // 3 - Create OnCompleteListener called after tasks ended
     private OnSuccessListener<Void> updateUIAfterRESTRequestsCompleted(final int origin){
@@ -185,7 +167,6 @@ public class SettingActivity extends BaseActivity {
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     User currentUser = documentSnapshot.toObject(User.class);
                     String username = TextUtils.isEmpty(currentUser.getUsername()) ? getString(R.string.info_no_username_found) : currentUser.getUsername();
-                    checkBoxIsMentor.setChecked(currentUser.getIsMentor());
                     textInputEditTextUsername.setText(username);
                 }
             });

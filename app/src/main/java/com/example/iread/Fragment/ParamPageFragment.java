@@ -13,8 +13,8 @@ import com.example.iread.R;
  * A simple {@link Fragment} subclass.
  */
 public class ParamPageFragment extends Fragment {
-    public static NewsPageFragment newInstance() {
-        return (new NewsPageFragment());
+    public static ParamPageFragment newInstance() {
+        return (new ParamPageFragment());
     }
 
     @Override

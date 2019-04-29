@@ -35,10 +35,6 @@ public class UserHelper {
         return UserHelper.getUsersCollection().document(uid).update("username", username);
     }
 
-    public static Task<Void> updateIsMentor(String uid, Boolean isMentor) {
-        return UserHelper.getUsersCollection().document(uid).update("isMentor", isMentor);
-    }
-
     // --- DELETE ---
 
     public static Task<Void> deleteUser(String uid) {

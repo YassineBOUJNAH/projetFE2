@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,15 +15,19 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.iread.Adapters.PageAdapter;
+import com.example.iread.Fragment.NewsPageFragment;
+import com.example.iread.Fragment.NewsPageFragment.OnAddClicklistener;
 import com.example.iread.Fragment.ProfilePageFragment;
 import com.example.iread.R;
 import com.example.iread.base.BaseActivity;
+import com.example.iread.controller.SearchBooks;
+import com.example.iread.controller.SearchFriends;
 import com.example.iread.model.User;
 import com.example.iread.options.SettingActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends BaseActivity implements OnAddClicklistener {
 
 
 
@@ -79,7 +84,7 @@ public class HomeActivity extends BaseActivity {
                 startActivity(new Intent(this, SettingActivity.class));
                 return true;
             case R.id.menu_activity_main_search:
-                Toast.makeText(this, "Recherche indisponible, demandez plutôt l'avis de Google, c'est mieux et plus rapide.", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, SearchBooks.class));
                 return true;
             case R.id.action_help:
 
@@ -87,5 +92,12 @@ public class HomeActivity extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onAddClick(View view) {
+        startActivity(new Intent(this, SearchFriends.class));
+
+    }
+///manupiler AmisFrgament///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
