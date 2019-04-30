@@ -8,8 +8,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.friend"></activity>
-        <activity android:name=".controller.invitation" />
+        <activity android:name=".controller.BookActivity"></activity>
+        <activity android:name=".controller.friend" />
+        <activity
+            android:name=".controller.invitation"
+            android:parentActivityName=".auth.HomeActivity" />
         <activity
             android:name=".controller.SearchBooks"
             android:label="Search Books"

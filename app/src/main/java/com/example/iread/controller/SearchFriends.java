@@ -1,12 +1,9 @@
 package com.example.iread.controller;
 
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,12 +15,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.iread.R;
 import com.example.iread.api.UserHelper;
+import com.example.iread.base.BaseActivity;
 import com.example.iread.model.User;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class SearchFriends extends AppCompatActivity implements View.OnClickListener {
+import static com.example.iread.api.FriendHelper.createFriendRequest;
+
+public class SearchFriends extends BaseActivity implements View.OnClickListener {
 
     EditText searchname ;
     Button searchButton;
@@ -32,7 +32,6 @@ public class SearchFriends extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_friends);
 
         this.configureToolbar();
         searchname =(EditText)findViewById(R.id.search_activity_name);
@@ -93,6 +92,11 @@ public class SearchFriends extends AppCompatActivity implements View.OnClickList
 
     }
 
+    @Override
+    public int getFragmentLayout() {
+        return R.layout.activity_search_friends;
+    }
+
     private void configureToolbar(){
         //Get the toolbar (Serialise)
         Toolbar toolbar = (Toolbar) findViewById(R.id.search_activity_toolbar);
@@ -107,7 +111,6 @@ public class SearchFriends extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         Log.e("TAG", "onClick: " + v.getTag() );
-        
-
+        createFriendRequest(getCurrentUser().getUid(), (String)v.getTag()).addOnFailureListener(this.onFailureListener());;
     }
 }
