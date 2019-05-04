@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.EntrainActivty"></activity>
+        <activity android:name=".controller.EntrainActivty"
+            android:label="En train de lire"/>
         <activity android:name=".controller.DejaLuActivity"
             android:label="Deja lu"
             android:parentActivityName=".auth.HomeActivity"/>
