@@ -21,6 +21,8 @@ import com.example.iread.Fragment.NewsPageFragment.OnAddClicklistener;
 import com.example.iread.Fragment.ProfilePageFragment;
 import com.example.iread.R;
 import com.example.iread.base.BaseActivity;
+import com.example.iread.controller.DejaLuActivity;
+import com.example.iread.controller.EntrainActivty;
 import com.example.iread.controller.SearchBooks;
 import com.example.iread.controller.SearchFriends;
 import com.example.iread.controller.friend;
@@ -121,5 +123,15 @@ public class HomeActivity extends BaseActivity implements OnAddClicklistener, Bl
     public void onInvitaionViewClick(View view) {
         startActivity(new Intent(this, invitation.class));
 
+    }
+
+    @Override
+    public void onDejaluClick(View view) {
+        startActivity(new Intent(this, DejaLuActivity.class));
+    }
+
+    @Override
+    public void onEntrainClick(View view) {
+        startActivity(new Intent(this, EntrainActivty.class));
     }
 }

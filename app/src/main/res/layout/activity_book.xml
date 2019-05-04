@@ -52,6 +52,19 @@
                         android:background="@drawable/loading_shape"
                         android:id="@+id/aa_thumbnail"
                         android:scaleType="centerCrop"/>
+                    <Button
+                        android:id="@+id/aa_select_book"
+                        android:layout_width="80dp"
+                        android:layout_gravity="center"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/link_background"
+                        android:text="Want to Read"
+                        android:padding="5dp"
+                        android:textSize="15sp"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"/>
 
 
 
@@ -141,31 +154,4 @@
 
 
 </android.support.design.widget.CoordinatorLayout>
-<!--
-<TextView
-                        android:id="@+id/aa_info"
-                        android:layout_width="70dp"
-                        android:layout_gravity="center"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/link_background"
-                        android:text="info"
-                        android:padding="5dp"
-                        android:textSize="15sp"
-                        android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:layout_marginTop="5dp"/>
-<TextView
-                        android:id="@+id/aa_preview"
-                        android:layout_width="70dp"
-                        android:layout_gravity="center"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/link_background"
-                        android:text="Preview"
-                        android:padding="5dp"
-                        android:textSize="15sp"
-                        android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:layout_marginTop="5dp"/>
--->
+

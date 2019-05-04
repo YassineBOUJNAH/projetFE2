@@ -20,6 +20,8 @@ public class BlankFragment extends Fragment {
         void onAddButtonClick(View view);
         void onfriendViewClick(View view);
         void onInvitaionViewClick(View view);
+        void onDejaluClick(View view);
+        void onEntrainClick(View view);
     }
     private BlankFragment.OnFriendClicklistener addCalback;
 
@@ -44,6 +46,18 @@ public class BlankFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addCalback.onInvitaionViewClick(v);
+            }
+        });
+        result.findViewById(R.id.fragment_blank_btn_deja).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addCalback.onDejaluClick(v);
+            }
+        });
+        result.findViewById(R.id.fragment_blank_btn_entrain).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addCalback.onEntrainClick(v);
             }
         });
         return result;

@@ -25,5 +25,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="voir vos amis"/>
+    <Button
+        android:id="@+id/fragment_blank_btn_deja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="deja lu"/>
+    <Button
+        android:id="@+id/fragment_blank_btn_entrain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="en train de lire"/>
 
 </LinearLayout>

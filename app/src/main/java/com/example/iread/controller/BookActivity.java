@@ -5,15 +5,21 @@ import android.net.Uri;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.iread.R;
+import com.example.iread.api.UserHelper;
+import com.example.iread.base.BaseActivity;
+import com.example.iread.model.BookFireBase;
 
-public class BookActivity extends AppCompatActivity {
+public class BookActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,7 @@ public class BookActivity extends AppCompatActivity {
         TextView tvDesc = findViewById(R.id.aa_description);
         TextView tvCatag = findViewById(R.id.aa_categorie);
         TextView tvPublishDate = findViewById(R.id.aa_publish_date);
+        final Button tvInfo = findViewById(R.id.aa_select_book);
         //TextView tvInfo = findViewById(R.id.aa_info);
         //TextView tvPreview = findViewById(R.id.aa_preview);
 
@@ -63,6 +70,40 @@ public class BookActivity extends AppCompatActivity {
         RequestOptions requestOptions = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
 
         Glide.with(this).load(thumbnail).apply(requestOptions).into(ivThumbnail);
+        final String finalAuthors = authors;
+        final String finalThumbnail = thumbnail;
+        final String finalTitle = title;
+        tvInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(BookActivity.this,tvInfo);
+                popupMenu.getMenuInflater().inflate(R.menu.pop_menu,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        //// Deja lu database //////////////////////////////////////////////////////////////////////////////////
+
+                        BookFireBase bk = new BookFireBase(finalAuthors, finalThumbnail, finalTitle);
+                        switch (menuItem.getItemId()){
+                            case R.id.pp_deja :
+                                UserHelper.getUsersCollection().document(getCurrentUser().getUid()).collection("BookRead").document(finalTitle).set(bk);
+                                return true;
+
+                            case R.id.pp_entrain :
+                                UserHelper.getUsersCollection().document(getCurrentUser().getUid()).collection("CurrentlyReding").document(finalTitle).set(bk);
+                                return true;
+                        }
+                        return true;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
+    }
+
+    @Override
+    public int getFragmentLayout() {
+        return R.layout.activity_book;
     }
 }
 
