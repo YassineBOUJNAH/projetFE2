@@ -1,5 +1,6 @@
 package com.example.iread.controller;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,11 +15,13 @@ import com.example.iread.Adapters.BookAdapter;
 import com.example.iread.Adapters.friendAdapter;
 import com.example.iread.R;
 import com.example.iread.api.UserHelper;
+import com.example.iread.auth.HomeActivity;
 import com.example.iread.base.BaseActivity;
 import com.example.iread.model.BookFireBase;
 import com.example.iread.model.friends;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 
 public class friend extends BaseActivity {
@@ -63,6 +66,16 @@ public class friend extends BaseActivity {
                 adapter.deleteItem(viewHolder.getAdapterPosition());
             }
         }).attachToRecyclerView(recyclerView);
+
+        adapter.setOnItemClickListener(new friendAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                String friend = documentSnapshot.toObject(friends.class).getfriend();
+                Intent i=new Intent(friend.this, ClickedFriendActivity.class);
+                i.putExtra("key",friend);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
