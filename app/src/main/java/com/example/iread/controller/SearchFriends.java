@@ -1,5 +1,7 @@
 package com.example.iread.controller;
 
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -110,7 +113,10 @@ public class SearchFriends extends BaseActivity implements View.OnClickListener 
 ////ajouter button
     @Override
     public void onClick(View v) {
-        Log.e("TAG", "onClick: " + v.getTag() );
-        createFriendRequest(getCurrentUser().getUid(), (String)v.getTag()).addOnFailureListener(this.onFailureListener());;
+
+        createFriendRequest(getCurrentUser().getUid(), (String)v.getTag()).addOnFailureListener(this.onFailureListener());
+        Toast.makeText(this, "Invitation envoye!", Toast.LENGTH_LONG).show();
+        finish();
+
     }
 }

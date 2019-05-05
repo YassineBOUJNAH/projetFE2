@@ -18,7 +18,7 @@ public class BookFireBase {
         return title;
     }
 
-    public BookFireBase (){};
+    public BookFireBase (){}
 
     public BookFireBase(String authors, String thumbnail, String title) {
         this.authors = authors;

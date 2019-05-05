@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -124,5 +125,8 @@ public class invitation extends BaseActivity implements View.OnClickListener {
                 }
             }
         });
+        Toast.makeText(this, "Amis ajouter!", Toast.LENGTH_LONG).show();
+        finish();
+
     }
 }
