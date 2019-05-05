@@ -19,10 +19,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class DejaLuActivity extends BaseActivity {
+public class FriendDejaLuActivity extends BaseActivity {
 
 
-    private CollectionReference bookRef = UserHelper.getUsersCollection().document(getCurrentUser().getUid()).collection("BookRead");
+    private Bundle extras;
+    private CollectionReference bookRef ;
 
     private BookAdapter adapter;
     @Override
@@ -34,6 +35,8 @@ public class DejaLuActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         configureToolbar();
+        extras = getIntent().getExtras();
+        bookRef = UserHelper.getUsersCollection().document(extras.getString("key")).collection("BookRead");
 
         setUpRecyclerView();
     }

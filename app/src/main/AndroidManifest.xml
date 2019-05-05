@@ -16,6 +16,14 @@
             android:name=".controller.DejaLuActivity"
             android:label="Deja lu"
             android:parentActivityName=".auth.HomeActivity" />
+        <activity
+            android:name=".controller.FriendDejaLuActivity"
+            android:label="Deja lu"
+            android:parentActivityName=".auth.HomeActivity" />
+        <activity
+            android:name=".controller.FriendEntrainActivity"
+            android:label="Entrain de lire"
+            android:parentActivityName=".auth.HomeActivity" />
         <activity android:name=".controller.BookActivity" />
         <activity
             android:name=".controller.friend"

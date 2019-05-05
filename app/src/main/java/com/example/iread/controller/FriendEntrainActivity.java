@@ -12,17 +12,16 @@ import com.example.iread.Adapters.BookAdapter;
 import com.example.iread.R;
 import com.example.iread.api.UserHelper;
 import com.example.iread.base.BaseActivity;
-import com.example.iread.model.Book;
 import com.example.iread.model.BookFireBase;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class DejaLuActivity extends BaseActivity {
+public class FriendEntrainActivity extends BaseActivity {
 
 
-    private CollectionReference bookRef = UserHelper.getUsersCollection().document(getCurrentUser().getUid()).collection("BookRead");
+    private Bundle extras;
+    private CollectionReference bookRef ;
 
     private BookAdapter adapter;
     @Override
@@ -34,7 +33,8 @@ public class DejaLuActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         configureToolbar();
-
+        extras = getIntent().getExtras();
+        bookRef = UserHelper.getUsersCollection().document(extras.getString("key")).collection("CurrentlyReding");
         setUpRecyclerView();
     }
 
@@ -75,5 +75,4 @@ public class DejaLuActivity extends BaseActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
     }
-
 }

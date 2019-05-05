@@ -115,7 +115,10 @@ public class invitation extends BaseActivity implements View.OnClickListener {
         Log.e("TAG", "onClick: " + v.getTag() );
         Map<String,String> map = new HashMap<String, String>();
         map.put("friend", (String) v.getTag());
+        Map<String,String> map2 = new HashMap<String,String>();
+        map2.put("friend",this.getCurrentUser().getUid());
         UserHelper.getUsersCollection().document(this.getCurrentUser().getUid()).collection("friends").document().set(map);
+        UserHelper.getUsersCollection().document((String)v.getTag()).collection("friends").document().set(map2);
         FriendHelper.getFriendsCollection().whereEqualTo("iudResever",this.getCurrentUser().getUid()).whereEqualTo("uidSender",(String) v.getTag())
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
