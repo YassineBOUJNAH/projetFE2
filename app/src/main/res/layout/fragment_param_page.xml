@@ -8,15 +8,9 @@
     android:gravity="center"
     android:background="#EDD9CF">
 
-    <TextView
-        android:id="@+id/fragment_page_param_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dip"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        android:textAlignment="center"
-        android:text="Nous pourrions afficher les parametre ?"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/friend_chat_recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
